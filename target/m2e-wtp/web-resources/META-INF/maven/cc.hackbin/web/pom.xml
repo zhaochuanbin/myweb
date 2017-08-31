@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cc.hackbin</groupId>
+  <artifactId>web</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <distributionManagement>
+
+    <repository>
+           <id>releases</id><!--这个ID需要与你的release仓库的Repository ID一致-->
+           <url>http://47.94.201.2:8081/nexus/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id><!--这个ID需要与你的snapshots仓库的Repository ID一致-->
+        <url>http://47.94.201.2:8081/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+
+</distributionManagement>
+  <build>
+    <finalName>web</finalName>
+  </build>
+</project>
