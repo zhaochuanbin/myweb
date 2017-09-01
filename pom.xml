@@ -6,7 +6,6 @@
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>web Maven Webapp</name>
-	<url>http://maven.apache.org</url>
 
 	<properties>
 		<!-- Generic properties -->
@@ -16,22 +15,23 @@
 	<distributionManagement>
 
 		<repository>
-			<id>releases</id><!--这个ID需要与你的release仓库的Repository ID一致 -->
+			<id>Releases</id><!--这个ID需要与你的release仓库的Repository ID一致 -->
 			<url>http://47.94.201.2:8081/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>snapshots</id><!--这个ID需要与你的snapshots仓库的Repository ID一致 -->
+			<id>Snapshots</id><!--这个ID需要与你的snapshots仓库的Repository ID一致 -->
 			<url>http://47.94.201.2:8081/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-	<build>
+		<build>
 		<finalName>myweb</finalName>
-		<plugins>
-			<plugin>
-				  <groupId>org.apache.maven.plugins</groupId>
+    <plugins>
+    <!--配置插件将main方法的类信息添加到manifest中，从而可以通过命令[java -jar 架包.jar]来执行生成的jar包-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <version>2.4.3</version>
-				<executions>
+        <executions>
           <execution>
             <phase>package</phase>
             <goals>
@@ -40,23 +40,14 @@
             <configuration>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>cc.hackbin.TestControl</mainClass>
+                    <mainClass>cc.hackbin.TestControl</mainClass>
                 </transformer>
               </transformers>
             </configuration>
           </execution>
         </executions>
-			</plugin>
-			<plugin>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.2</version>
-				<configuration>
-					<verbose>true</verbose>
-					<overwrite>true</overwrite>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
